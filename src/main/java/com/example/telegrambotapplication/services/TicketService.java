@@ -34,8 +34,6 @@ public class TicketService {
     }
 
     public Ticket saveTicket(Ticket ticket){
-        System.out.println(ticket.getName() + ticket.getSurname() + ticket.getPlace());
-        System.out.println(ticket);
         return ticketRepository.save(ticket);
     }
 
