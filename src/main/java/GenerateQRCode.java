@@ -11,8 +11,8 @@ import java.nio.file.Paths;
 
 public class GenerateQRCode {
     public static void main(String[] args) throws WriterException, IOException {
-        String data="Ukrainets Volodymyr 1";
-        String path="/Users/volodimirukrainec/Desktop/qr.jpg";
+        String data="vova ukrainets 2";
+        String path="/Users/volodimirukrainec/Desktop/qr/qr.jpg";
         BitMatrix matrix = new MultiFormatWriter().encode(data,BarcodeFormat.QR_CODE,500,500);
 
 
