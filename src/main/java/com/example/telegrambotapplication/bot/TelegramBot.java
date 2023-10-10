@@ -55,14 +55,14 @@ public class TelegramBot extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(String.valueOf(chatId));
         sendMessage.setText(textToSend);
-        sendMessage.setReplyMarkup(Menu());
+        sendMessage.setReplyMarkup(menu());
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {
             System.out.println(e.getMessage());
         }
     }
-    private ReplyKeyboardMarkup Menu(){
+    private ReplyKeyboardMarkup menu(){
         ReplyKeyboardMarkup markup = new ReplyKeyboardMarkup();
         KeyboardRow buttons = new KeyboardRow();
         buttons.add("Оплата");
@@ -74,9 +74,8 @@ public class TelegramBot extends TelegramLongPollingBot {
         rows.add(buttons);
         rows.add(buttonsSupport);
         markup.setKeyboard(rows);
+
         return markup;
-
-
     }
 }
 
