@@ -62,6 +62,7 @@ public class TelegramBot extends TelegramLongPollingBot {
             System.out.println(e.getMessage());
         }
     }
+
     private ReplyKeyboardMarkup menu(){
         ReplyKeyboardMarkup markup = new ReplyKeyboardMarkup();
         KeyboardRow buttons = new KeyboardRow();
