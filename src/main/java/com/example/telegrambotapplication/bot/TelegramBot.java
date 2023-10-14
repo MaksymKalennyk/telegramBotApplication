@@ -7,7 +7,12 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @AllArgsConstructor
@@ -50,11 +55,28 @@ public class TelegramBot extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(String.valueOf(chatId));
         sendMessage.setText(textToSend);
+        sendMessage.setReplyMarkup(menu());
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private ReplyKeyboardMarkup menu(){
+        ReplyKeyboardMarkup markup = new ReplyKeyboardMarkup();
+        KeyboardRow buttons = new KeyboardRow();
+        buttons.add("Оплата");
+        buttons.add("Отримати білет");
+        KeyboardRow buttonsSupport = new KeyboardRow();
+        buttonsSupport.add("FAQ");
+        buttonsSupport.add("Підтримка");
+        List<KeyboardRow> rows = new ArrayList<>();
+        rows.add(buttons);
+        rows.add(buttonsSupport);
+        markup.setKeyboard(rows);
+
+        return markup;
     }
 }
 
