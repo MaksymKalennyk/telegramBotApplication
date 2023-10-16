@@ -8,15 +8,16 @@ import com.google.zxing.common.BitMatrix;
 import javax.imageio.IIOException;
 import java.io.IOException;
 import java.nio.file.Paths;
-
 public class GenerateQRCode {
-    public static void main(String[] args) throws WriterException, IOException {
-        String data="vova ukrainets 2";
-        String path="/Users/volodimirukrainec/Desktop/qr/qr.jpg";
-        BitMatrix matrix = new MultiFormatWriter().encode(data,BarcodeFormat.QR_CODE,500,500);
+  public static void main(String[] args) {
+    String data = "Kalennyk Maks 3";
+    String path = "/Users/volodimirukrainec/Desktop/qr/qr.jpg";
 
-
-        MatrixToImageWriter.writeToPath(matrix, "JPG",Paths.get(path));
-        System.out.println("Qr good");
+    Generator generator = new Generator();
+    try {
+      generator.generator_method(data, path);
+    } catch (WriterException | IOException e) {
+      e.printStackTrace();
     }
+  }
 }
